@@ -1,0 +1,5 @@
+#!/bin/bash
+cd $(catkin_find --libexec ros_ethercat_loop)
+sudo setcap cap_sys_nice,cap_ipc_lock,cap_net_raw,cap_net_admin=eip ros_ethercat_loop
+sudo setcap cap_sys_nice=eip /usr/bin/nice
+
