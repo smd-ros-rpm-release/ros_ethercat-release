@@ -1,0 +1,12 @@
+Source: ros-hydro-ros-ethercat-model
+Section: misc
+Priority: extra
+Maintainer: Shadow Robot's software team <software@shadowrobot.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin, ros-hydro-hardware-interface, ros-hydro-joint-state-controller, ros-hydro-kdl-parser, ros-hydro-pluginlib, ros-hydro-pr2-mechanism-msgs, ros-hydro-roscpp, ros-hydro-urdf
+Homepage: http://www.shadowrobot.com/
+Standards-Version: 3.9.2
+
+Package: ros-hydro-ros-ethercat-model
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-hardware-interface, ros-hydro-joint-state-controller, ros-hydro-kdl-parser, ros-hydro-pluginlib, ros-hydro-pr2-mechanism-msgs, ros-hydro-roscpp, ros-hydro-urdf
+Description: The mechanism model
