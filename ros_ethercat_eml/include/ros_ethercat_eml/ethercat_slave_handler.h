@@ -34,8 +34,8 @@
 #ifndef __ethercat_slave_handler__
 #define __ethercat_slave_handler__
 
-#include "ros_ethercat_eml/al/ethercat_FSM.h"
-#include "ros_ethercat_eml/al/ethercat_slave_conf.h"
+#include "ros_ethercat_eml/ethercat_FSM.h"
+#include "ros_ethercat_eml/ethercat_slave_conf.h"
 
 // forward declaration
 class EtherCAT_AL;
