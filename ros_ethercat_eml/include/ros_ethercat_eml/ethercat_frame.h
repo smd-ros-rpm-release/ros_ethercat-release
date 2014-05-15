@@ -34,8 +34,8 @@
 #ifndef __ethercat_frame_h__
 #define __ethercat_frame_h__
 
-#include "ros_ethercat_eml/dll/ethercat_telegram.h"
-#include "ros_ethercat_eml/ethercat/netif.h"
+#include "ros_ethercat_eml/ethercat_telegram.h"
+#include "ros_ethercat_eml/netif.h"
 
 /** "Dump" an EtherCAT frame into an array of bytes (for
     transmitting).
