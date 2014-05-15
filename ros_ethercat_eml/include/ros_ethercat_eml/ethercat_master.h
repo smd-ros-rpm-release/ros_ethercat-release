@@ -42,9 +42,9 @@ class EtherCAT_PD_Buffer;
 class EC_Logic;
 class EtherCAT_DataLinkLayer;
 
-#include "ros_ethercat_eml/al/ethercat_mbx.h"
-#include "ros_ethercat_eml/al/ethercat_process_data.h"
-#include "ros_ethercat_eml/dll/ethercat_slave_memory.h"
+#include "ros_ethercat_eml/ethercat_mbx.h"
+#include "ros_ethercat_eml/ethercat_process_data.h"
+#include "ros_ethercat_eml/ethercat_slave_memory.h"
 
 /// EtherCAT Master instance
 class EtherCAT_Master

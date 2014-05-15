@@ -31,7 +31,7 @@
 //===========================================================================
 
  
-#include "ros_ethercat_eml/al/ethercat_mbx.h"
+#include "ros_ethercat_eml/ethercat_mbx.h"
 #include <assert.h>
 
 EC_MbxMsgHdr::EC_MbxMsgHdr(const unsigned char * a_buffer)
