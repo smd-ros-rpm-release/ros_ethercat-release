@@ -31,8 +31,8 @@
 //===========================================================================
 
  
-#include "ros_ethercat_eml/dll/ethercat_telegram.h"
-#include "ros_ethercat_eml/ethercat/ethercat_log.h"
+#include "ros_ethercat_eml/ethercat_telegram.h"
+#include "ros_ethercat_eml/ethercat_log.h"
 #include <assert.h>
 
 // Number of bits of the Reserved and NEXT field
