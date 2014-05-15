@@ -1,4 +1,4 @@
-// $Id: ethercat_slave_handler.cxx,v 1.19 2006/02/20 15:57:33 kgad Exp $
+// $Id:$
 //===========================================================================
 //	This file is part of "EtherCAT Master Library".
 //	Copyright (C) 2005 FMTC vzw, Diamant Building, A. Reyerslaan 80,
@@ -30,48 +30,13 @@
 //	Automation GmbH, Eiserstrasse 5, D-33415 Verl, Germany.
 //===========================================================================
 
- 
-#include "ros_ethercat_eml/al/ethercat_slave_handler.h"
-#include <assert.h>
 
-EtherCAT_SlaveHandler::EtherCAT_SlaveHandler(uint16_t a_ring_position,
-					     uint32_t a_product_code,
-					     uint32_t a_revision,
-					     uint32_t a_serial,
-					     EC_FixedStationAddress a_station_address,
-					     EtherCAT_FMMU_Config * a_fmmu_config,
-					     EtherCAT_PD_Config * a_pd_config,
-					     EtherCAT_MbxConfig * a_mbx_config)
-  : EC_ESM(this),
-    EtherCAT_SlaveConfig(a_product_code,
-			 a_revision,
-			 a_station_address,
-			 a_fmmu_config,
-			 a_pd_config,
-			 a_mbx_config),
-    m_ring_position(a_ring_position),
-    m_serial(a_serial),
-    m_mbx_counter(0)
-{}
+#ifndef ethercat_xenomai_drv_h
+#define ethercat_xenomai_drv_h
+#include <ros_ethercat_eml/netif.h>
 
-EtherCAT_SlaveHandler::EtherCAT_SlaveHandler(uint16_t a_ring_position,
-					     const EtherCAT_SlaveConfig * a_sconf, uint32_t a_serial)
-  : EC_ESM(this),
-    EtherCAT_SlaveConfig(*a_sconf),
-    m_ring_position(a_ring_position),
-    m_serial(a_serial),
-    m_mbx_counter(0)
-{}
+int set_socket_timeout(struct netif* , int64_t ); // change the timeout (in ns)
+struct netif* init_ec(const char *);	// create an EtharCAT network interface
+int close_socket(struct netif*);		// close the used socket
 
-EtherCAT_SlaveHandler::~EtherCAT_SlaveHandler(){}
-
-
-uint8_t EtherCAT_SlaveHandler::get_mbx_counter()
-{
-  m_mbx_counter = 1+(m_mbx_counter % 7);
-  assert(m_mbx_counter>0);
-  assert(m_mbx_counter<=7);
-  return m_mbx_counter;
-}
-
-
+#endif

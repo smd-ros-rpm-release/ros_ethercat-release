@@ -32,12 +32,12 @@
 
  
 #include <string.h>
-#include "ros_ethercat_eml/ethercat/ethercat_log.h"
-#include "ros_ethercat_eml/dll/ethercat_dll.h"
-#include "ros_ethercat_eml/dll/ethercat_frame.h"
-#include "ros_ethercat_eml/dll/ethercat_device_addressed_telegram.h"
-#include "ros_ethercat_eml/dll/ethercat_logical_addressed_telegram.h"
-#include "ros_ethercat_eml/ethercat/netif.h"
+#include "ros_ethercat_eml/ethercat_log.h"
+#include "ros_ethercat_eml/ethercat_dll.h"
+#include "ros_ethercat_eml/ethercat_frame.h"
+#include "ros_ethercat_eml/ethercat_device_addressed_telegram.h"
+#include "ros_ethercat_eml/ethercat_logical_addressed_telegram.h"
+#include "ros_ethercat_eml/netif.h"
 //#include "pkgconf/net_ethercatmaster.h"
 
 #include "unistd.h"

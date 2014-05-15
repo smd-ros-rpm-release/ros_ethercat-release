@@ -34,9 +34,9 @@
 #ifndef __ethercat_slave_memory_h__
 #define __ethercat_slave_memory_h__
 
-#include "ros_ethercat_eml/ethercat/ethercat_defs.h"
-#include "ros_ethercat_eml/ethercat/ethercat_log.h"
-#include "ros_ethercat_eml/ethercat/ethercat_datastruct.h"
+#include "ros_ethercat_eml/ethercat_defs.h"
+#include "ros_ethercat_eml/ethercat_log.h"
+#include "ros_ethercat_eml/ethercat_datastruct.h"
 #include <stdio.h>
 #include <cassert>
 
