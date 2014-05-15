@@ -31,16 +31,16 @@
 //===========================================================================
 
  
-#include "ros_ethercat_eml/al/ethercat_FSM.h"
-#include "ros_ethercat_eml/al/ethercat_AL.h"
-#include "ros_ethercat_eml/al/ethercat_slave_handler.h"
-#include "ros_ethercat_eml/al/ethercat_router.h"
-#include "ros_ethercat_eml/al/ethercat_process_data.h"
-#include "ros_ethercat_eml/dll/ethercat_slave_memory.h"
-#include "ros_ethercat_eml/dll/ethercat_dll.h"
-#include "ros_ethercat_eml/dll/ethercat_telegram.h"
-#include "ros_ethercat_eml/dll/ethercat_frame.h"
-#include "ros_ethercat_eml/dll/ethercat_device_addressed_telegram.h"
+#include "ros_ethercat_eml/ethercat_FSM.h"
+#include "ros_ethercat_eml/ethercat_AL.h"
+#include "ros_ethercat_eml/ethercat_slave_handler.h"
+#include "ros_ethercat_eml/ethercat_router.h"
+#include "ros_ethercat_eml/ethercat_process_data.h"
+#include "ros_ethercat_eml/ethercat_slave_memory.h"
+#include "ros_ethercat_eml/ethercat_dll.h"
+#include "ros_ethercat_eml/ethercat_telegram.h"
+#include "ros_ethercat_eml/ethercat_frame.h"
+#include "ros_ethercat_eml/ethercat_device_addressed_telegram.h"
 #include <time.h>
 
 EC_ESM_InitState EC_ESM_State::initState;
