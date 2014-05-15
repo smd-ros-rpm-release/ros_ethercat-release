@@ -52,8 +52,8 @@
 #include <assert.h>
 #include <string.h>
 
-#include <ros_ethercat_eml/ethercat/netif.h>
-#include <ros_ethercat_eml/ethercat/ethercat_log.h>
+#include <ros_ethercat_eml/netif.h>
+#include <ros_ethercat_eml/ethercat_log.h>
 
 #include <time.h>
 #include <unistd.h>
