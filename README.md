@@ -1,3 +1,27 @@
+## ros_ethercat (indigo) - 0.1.6-1
+
+The packages in the `ros_ethercat` repository were released into the `indigo` distro by running `/usr/bin/bloom-release ros_ethercat --track indigo --rosdistro indigo` on `Mon, 19 May 2014 16:43:28 -0000`
+
+These packages were released:
+- `ros_ethercat`
+- `ros_ethercat_eml`
+- `ros_ethercat_hardware`
+- `ros_ethercat_loop`
+- `ros_ethercat_model`
+
+Version of package(s) in repository `ros_ethercat`:
+- rosdistro version: `0.1.6-0`
+- old version: `0.1.6-0`
+- new version: `0.1.6-1`
+
+Versions of tools used:
+- bloom version: `0.5.7`
+- catkin_pkg version: `0.2.2`
+- rosdep version: `0.10.27`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## ros_ethercat (hydro) - 0.1.6-1
 
 The packages in the `ros_ethercat` repository were released into the `hydro` distro by running `/usr/bin/bloom-release ros_ethercat --track hydro --rosdistro hydro` on `Mon, 19 May 2014 16:40:41 -0000`
