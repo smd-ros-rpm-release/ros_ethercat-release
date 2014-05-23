@@ -1,0 +1,12 @@
+Source: ros-hydro-ros-ethercat
+Section: misc
+Priority: extra
+Maintainer: Shadow Robot's software team <software@shadowrobot.com>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin
+Homepage: http://ros.org/wiki/ros_ethercat
+Standards-Version: 3.9.2
+
+Package: ros-hydro-ros-ethercat
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-ros-ethercat-eml, ros-hydro-ros-ethercat-hardware, ros-hydro-ros-ethercat-loop, ros-hydro-ros-ethercat-model
+Description: A pr2 agnostic replacement for robots using EtherCAT
