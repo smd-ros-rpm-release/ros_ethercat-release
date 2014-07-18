@@ -36,7 +36,6 @@
 #include "ros_ethercat_eml/ethercat_telegram.h"
 
 /// EtherCAT telegram for all _device addressing_ modes
-
 /** EtherCAT telegram for all _device addressing_ modes, including
  Position Addressing Modes (e.g.~Auto Increment Physical Read--APRD),
  Node Addressing modes (e.g.~Node addressed Physical Read--NPRD)
@@ -60,6 +59,7 @@ public:
                              uint16_t a_wkc = 0x0000,
                              uint16_t a_datalen = 0x0000,
                              const unsigned char * a_data = NULL);
+
   virtual ~Device_Addressing_Telegram()
   {
   }
@@ -98,7 +98,6 @@ private:
 };
 
 /// Auto Increment Physical Read Telegram (APRD)
-
 class APRD_Telegram : public Device_Addressing_Telegram
 {
 public:
@@ -127,7 +126,6 @@ protected:
 };
 
 /// Auto Increment Physical Write Telegram (APWR)
-
 class APWR_Telegram : public Device_Addressing_Telegram
 {
 public:
@@ -151,7 +149,6 @@ protected:
 };
 
 /// Auto Increment Physical Read and Write Telegram (APRW)
-
 class APRW_Telegram : public Device_Addressing_Telegram
 {
 public:
@@ -175,7 +172,6 @@ protected:
 };
 
 /// Broadcast Write Telegram (BWR)
-
 class BWR_Telegram : public Device_Addressing_Telegram
 {
 public:
@@ -197,7 +193,6 @@ protected:
 };
 
 /// Broadcast Read Telegram (BRD)
-
 class BRD_Telegram : public Device_Addressing_Telegram
 {
 public:
@@ -219,7 +214,6 @@ protected:
 };
 
 /// Node Addressed Physical Write Telegram (NPWR)
-
 /** @note older versions of the spec and the ethereal plugin use FPWR
  for this type
  */
@@ -246,7 +240,6 @@ protected:
 };
 
 /// Node Addressed Physical Read Write Telegram (NPRW)
-
 /** @note older versions of the spec and the ethereal plugin use FPRW
  for this type
  */
@@ -273,7 +266,6 @@ protected:
 };
 
 /// Node Addressed Physical Read Telegram (NPRD)
-
 /** @note older versions of the spec and the ethereal plugin use FPWR
  for this type
  */
@@ -300,7 +292,6 @@ protected:
 };
 
 /// Auto Increment Physical Read Multiple Write Telegram (ARMW)
-
 class ARMW_Telegram : public Device_Addressing_Telegram
 {
 public:

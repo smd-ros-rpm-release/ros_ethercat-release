@@ -42,7 +42,6 @@ static const size_t ETHERCAT_TELEGRAM_HEADER_SIZE = 10;
 static const size_t ETHERCAT_TELEGRAM_WKC_SIZE = 2;
 
 /// EtherCat Telegram Base class
-
 /** This class should never be used explicitly, only use the
  interface.  Therefore its constructor is protected.  The names are
  chosen according to the Ethercat spec.
@@ -67,17 +66,17 @@ public:
   }
   /// Get working counter
   uint16_t get_wkc(void) const
-  {
+                   {
     return m_wkc;
   }
   /// Get index
   uint8_t get_idx(void) const
-  {
+                  {
     return m_idx;
   }
   /// Get pointer to data
   const unsigned char * get_data(void) const
-  {
+                                 {
     return m_data;
   }
   /// Set data
@@ -87,17 +86,17 @@ public:
   }
   /// Get data length
   size_t get_datalen(void) const
-  {
+                     {
     return (length() -
-            ETHERCAT_TELEGRAM_HEADER_SIZE -
-            ETHERCAT_TELEGRAM_WKC_SIZE);
+        ETHERCAT_TELEGRAM_HEADER_SIZE -
+        ETHERCAT_TELEGRAM_WKC_SIZE);
   }
   /// Set data length
   void set_datalen(size_t len)
   {
     m_data_length = len +
-      ETHERCAT_TELEGRAM_HEADER_SIZE +
-      ETHERCAT_TELEGRAM_WKC_SIZE;
+        ETHERCAT_TELEGRAM_HEADER_SIZE +
+        ETHERCAT_TELEGRAM_WKC_SIZE;
   }
 
   /// attach telegram to this one - ordering is somewhat arbitrary
@@ -143,12 +142,13 @@ protected:
   uint16_t m_wkc;
   /// IRQ Field (currently unused)
   static const uint16_t m_irq;
+
   virtual size_t header_length(void) const
-  {
+                               {
     return ETHERCAT_TELEGRAM_HEADER_SIZE;
   }
   virtual size_t tail_length(void) const
-  {
+                             {
     return ETHERCAT_TELEGRAM_WKC_SIZE;
   }
 

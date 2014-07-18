@@ -37,7 +37,6 @@
 #include "ros_ethercat_eml/ethercat_slave_memory.h"
 
 /// FMMU Configuration of a slave
-
 class EtherCAT_FMMU_Config
 {
 public:
@@ -76,7 +75,6 @@ protected:
 };
 
 /// Process Data Configuration
-
 /** This class contains the configuration of the Sync Managers used
  for the process data transmission
  */
@@ -102,12 +100,12 @@ public:
   }
 
   /// Get a sync Manager configuration
-  /** @param i which Sync Manager
+  /** @param i which Sync Manager 
    @return ref to the Sync Manager
    */
   EC_SyncMan & operator[](unsigned int i);
   /// Get a sync Manager configuration (const version)
-  /** @param i which Sync Manager
+  /** @param i which Sync Manager 
    @return ref to the Sync Manager
    */
   const EC_SyncMan & operator[](unsigned int i) const;
@@ -120,7 +118,6 @@ protected:
 };
 
 /// Mailbox Configuration (Sync Manager 0 and 1)
-
 typedef struct
 {
   /// Sync Manager 0: For Master to slave communication
@@ -130,7 +127,6 @@ typedef struct
 } EtherCAT_MbxConfig;
 
 /// Configuration of EtherCAT Slave
-
 /** @todo Build this class by parsing (xml-)configuration file
  */
 class EtherCAT_SlaveConfig
@@ -165,7 +161,7 @@ public:
 public:
   /// Is this a complex slave?
   bool is_complex(void) const
-  {
+                  {
     return m_complex;
   }
   ;
@@ -232,7 +228,7 @@ protected:
   /// FMMU config to be written when going to preop
   EtherCAT_FMMU_Config * m_fmmu_config;
   /// PD Configuration (SMS)
-  EtherCAT_PD_Config * m_pd_config; /// Position in the EtherCAT logical Ring
+  EtherCAT_PD_Config * m_pd_config;  /// Position in the EtherCAT logical Ring
   /// Configuration of Sync Man channel 0 and 1 for MBX
   EtherCAT_MbxConfig * m_mbx_config;
 
@@ -241,7 +237,6 @@ protected:
 };
 
 /// Database of EtherCAT slave configurations
-
 /** @todo allow dynamic updating by adding of removing a slave
  configuration
  */
@@ -250,6 +245,7 @@ class EtherCAT_SlaveDb
 public:
   /// Singleton
   static EtherCAT_SlaveDb * instance(unsigned int num_slaves = 0);
+
   ~EtherCAT_SlaveDb()
   {
     delete[] m_sc;
@@ -267,7 +263,7 @@ public:
    */
   const EtherCAT_SlaveConfig * find(uint32_t productcode,
                                     uint32_t revision) const;
-protected:
+  protected:
   /// Constructor
   EtherCAT_SlaveDb(unsigned int num_slaves);
 

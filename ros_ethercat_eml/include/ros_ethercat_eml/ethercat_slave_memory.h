@@ -42,7 +42,7 @@
 // Describes registers of EtherCAT slave controller
 static const size_t EC_DLInformationSize = 0xa; // 10 bytes
 
-// Product code and revision offset in SII Eeprom data
+// Product code and revision offset in SII Eeprom data 
 /* BIG FAT WARNING:  THIS VARIES FROM WHAT IS WRITTEN IN THE ETHERCAT
  SPEC VERSION 1.0!!!
  */
@@ -134,7 +134,6 @@ enum ECAT_Register_Access
 };
 
 /// EtherCAT Slave Register data
-
 struct ECAT_Slave_Register_Data
 {
   /// Register name
@@ -150,78 +149,79 @@ struct ECAT_Slave_Register_Data
 };
 
 static const ECAT_Slave_Register_Data EC_Slave_RD[NumRegisters] = {
-  {"Type", 0x0000, EC_R, EC_R, 0x01},
-  {"Revision", 0x0001, EC_R, EC_R, 0x01},
-  {"Build", 0x0002, EC_R, EC_R, 0x02},
-  {"Number of FMMUs", 0x0004, EC_R, EC_R, 0x01},
-  {"Number of Sync Managers", 0x0005, EC_R, EC_R, 0x01},
-  {"RAM Size", 0x0006, EC_R, EC_R, 0x01},
-  {"EtherCAT Station Address", 0x0010, EC_RW, EC_R, 0x02},
-  {"DLL Control Register", 0x0100, EC_RW, EC_R, 0x02},
-  {"DLL Status Register", 0x0110, EC_R, EC_R, 0x02},
-  {"AL Control Register", 0x0120, EC_RW, EC_R, 0x02},
-  {"AL Status Register", 0x0130, EC_R, EC_RW, 0x02},
-  {"PDI Control Register", 0x0140, EC_R, EC_R, 0x02},
-  {"PDI Config Register", 0x0150, EC_R, EC_R, 0x05},
-  {"AL Event Register", 0x0220, EC_R, EC_R, 0x04},
-  {"RX Error Counter Channel A", 0x0300, EC_RW, EC_R, 0x02},
-  {"RX Error Counter Channel B", 0x0302, EC_RW, EC_R, 0x02},
-  {"Watchdog divider", 0x0400, EC_RW, EC_R, 0x02},
-  {"Watchdog Time PDI", 0x0410, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 0", 0x0420, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 1", 0x0422, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 2", 0x0424, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 3", 0x0426, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 4", 0x0428, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 5", 0x042a, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 6", 0x042c, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 7", 0x042e, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 8", 0x0430, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 9", 0x0432, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 10", 0x0434, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 11", 0x0436, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 12", 0x0438, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 13", 0x043a, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 14", 0x043c, EC_RW, EC_R, 0x02},
-  {"Watchdog Time Channel 15", 0x043e, EC_RW, EC_R, 0x02},
-  {"Watchdog Channel status", 0x0450, EC_R, EC_R, 0x02},
-  {"SII Eeprom Size", 0x0500, EC_R, EC_R, 0x02},
-  {"SII Control/Status", 0x0502, EC_RW, EC_R, 0x02},
-  {"SII Address", 0x0504, EC_RW, EC_R, 0x04},
-  {"SII Data", 0x0508, EC_RW, EC_R, 0x04},
-  {"FMMU0", 0x0600, EC_RW, EC_R, 0x10},
-  {"FMMU1", 0x0610, EC_RW, EC_R, 0x10},
-  {"FMMU2", 0x0620, EC_RW, EC_R, 0x10},
-  {"FMMU3", 0x0630, EC_RW, EC_R, 0x10},
-  {"FMMU4", 0x0640, EC_RW, EC_R, 0x10},
-  {"FMMU5", 0x0650, EC_RW, EC_R, 0x10},
-  {"FMMU6", 0x0660, EC_RW, EC_R, 0x10},
-  {"FMMU7", 0x0670, EC_RW, EC_R, 0x10},
-  {"FMMU8", 0x0680, EC_RW, EC_R, 0x10},
-  {"FMMU9", 0x0690, EC_RW, EC_R, 0x10},
-  {"FMMU10", 0x06A0, EC_RW, EC_R, 0x10},
-  {"FMMU11", 0x06B0, EC_RW, EC_R, 0x10},
-  {"FMMU12", 0x06C0, EC_RW, EC_R, 0x10},
-  {"FMMU13", 0x06D0, EC_RW, EC_R, 0x10},
-  {"FMMU14", 0x06E0, EC_RW, EC_R, 0x10},
-  {"FMMU15", 0x06F0, EC_RW, EC_R, 0x10},
-  {"Sync Manager 0", 0x0800, EC_RW, EC_R, 0x08},
-  {"Sync Manager 1", 0x0808, EC_RW, EC_R, 0x08},
-  {"Sync Manager 2", 0x0810, EC_RW, EC_R, 0x08},
-  {"Sync Manager 3", 0x0818, EC_RW, EC_R, 0x08},
-  {"Sync Manager 4", 0x0820, EC_RW, EC_R, 0x08},
-  {"Sync Manager 5", 0x0828, EC_RW, EC_R, 0x08},
-  {"Sync Manager 6", 0x0830, EC_RW, EC_R, 0x08},
-  {"Sync Manager 7", 0x0838, EC_RW, EC_R, 0x08},
-  {"Sync Manager 8", 0x0840, EC_RW, EC_R, 0x08},
-  {"Sync Manager 9", 0x0848, EC_RW, EC_R, 0x08},
-  {"Sync Manager 10", 0x0850, EC_RW, EC_R, 0x08},
-  {"Sync Manager 11", 0x0858, EC_RW, EC_R, 0x08},
-  {"Sync Manager 12", 0x0860, EC_RW, EC_R, 0x08},
-  {"Sync Manager 13", 0x0868, EC_RW, EC_R, 0x08},
-  {"Sync Manager 14", 0x0870, EC_RW, EC_R, 0x08},
-  {"Sync Manager 15", 0x0878, EC_RW, EC_R, 0x08}
+    {"Type", 0x0000, EC_R, EC_R, 0x01},
+    {"Revision", 0x0001, EC_R, EC_R, 0x01},
+    {"Build", 0x0002, EC_R, EC_R, 0x02},
+    {"Number of FMMUs", 0x0004, EC_R, EC_R, 0x01},
+    {"Number of Sync Managers", 0x0005, EC_R, EC_R, 0x01},
+    {"RAM Size", 0x0006, EC_R, EC_R, 0x01},
+    {"EtherCAT Station Address", 0x0010, EC_RW, EC_R, 0x02},
+    {"DLL Control Register", 0x0100, EC_RW, EC_R, 0x02},
+    {"DLL Status Register", 0x0110, EC_R, EC_R, 0x02},
+    {"AL Control Register", 0x0120, EC_RW, EC_R, 0x02},
+    {"AL Status Register", 0x0130, EC_R, EC_RW, 0x02},
+    {"PDI Control Register", 0x0140, EC_R, EC_R, 0x02},
+    {"PDI Config Register", 0x0150, EC_R, EC_R, 0x05},
+    {"AL Event Register", 0x0220, EC_R, EC_R, 0x04},
+    {"RX Error Counter Channel A", 0x0300, EC_RW, EC_R, 0x02},
+    {"RX Error Counter Channel B", 0x0302, EC_RW, EC_R, 0x02},
+    {"Watchdog divider", 0x0400, EC_RW, EC_R, 0x02},
+    {"Watchdog Time PDI", 0x0410, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 0", 0x0420, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 1", 0x0422, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 2", 0x0424, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 3", 0x0426, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 4", 0x0428, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 5", 0x042a, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 6", 0x042c, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 7", 0x042e, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 8", 0x0430, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 9", 0x0432, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 10", 0x0434, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 11", 0x0436, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 12", 0x0438, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 13", 0x043a, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 14", 0x043c, EC_RW, EC_R, 0x02},
+    {"Watchdog Time Channel 15", 0x043e, EC_RW, EC_R, 0x02},
+    {"Watchdog Channel status", 0x0450, EC_R, EC_R, 0x02},
+    {"SII Eeprom Size", 0x0500, EC_R, EC_R, 0x02},
+    {"SII Control/Status", 0x0502, EC_RW, EC_R, 0x02},
+    {"SII Address", 0x0504, EC_RW, EC_R, 0x04},
+    {"SII Data", 0x0508, EC_RW, EC_R, 0x04},
+    {"FMMU0", 0x0600, EC_RW, EC_R, 0x10},
+    {"FMMU1", 0x0610, EC_RW, EC_R, 0x10},
+    {"FMMU2", 0x0620, EC_RW, EC_R, 0x10},
+    {"FMMU3", 0x0630, EC_RW, EC_R, 0x10},
+    {"FMMU4", 0x0640, EC_RW, EC_R, 0x10},
+    {"FMMU5", 0x0650, EC_RW, EC_R, 0x10},
+    {"FMMU6", 0x0660, EC_RW, EC_R, 0x10},
+    {"FMMU7", 0x0670, EC_RW, EC_R, 0x10},
+    {"FMMU8", 0x0680, EC_RW, EC_R, 0x10},
+    {"FMMU9", 0x0690, EC_RW, EC_R, 0x10},
+    {"FMMU10", 0x06A0, EC_RW, EC_R, 0x10},
+    {"FMMU11", 0x06B0, EC_RW, EC_R, 0x10},
+    {"FMMU12", 0x06C0, EC_RW, EC_R, 0x10},
+    {"FMMU13", 0x06D0, EC_RW, EC_R, 0x10},
+    {"FMMU14", 0x06E0, EC_RW, EC_R, 0x10},
+    {"FMMU15", 0x06F0, EC_RW, EC_R, 0x10},
+    {"Sync Manager 0", 0x0800, EC_RW, EC_R, 0x08},
+    {"Sync Manager 1", 0x0808, EC_RW, EC_R, 0x08},
+    {"Sync Manager 2", 0x0810, EC_RW, EC_R, 0x08},
+    {"Sync Manager 3", 0x0818, EC_RW, EC_R, 0x08},
+    {"Sync Manager 4", 0x0820, EC_RW, EC_R, 0x08},
+    {"Sync Manager 5", 0x0828, EC_RW, EC_R, 0x08},
+    {"Sync Manager 6", 0x0830, EC_RW, EC_R, 0x08},
+    {"Sync Manager 7", 0x0838, EC_RW, EC_R, 0x08},
+    {"Sync Manager 8", 0x0840, EC_RW, EC_R, 0x08},
+    {"Sync Manager 9", 0x0848, EC_RW, EC_R, 0x08},
+    {"Sync Manager 10", 0x0850, EC_RW, EC_R, 0x08},
+    {"Sync Manager 11", 0x0858, EC_RW, EC_R, 0x08},
+    {"Sync Manager 12", 0x0860, EC_RW, EC_R, 0x08},
+    {"Sync Manager 13", 0x0868, EC_RW, EC_R, 0x08},
+    {"Sync Manager 14", 0x0870, EC_RW, EC_R, 0x08},
+    {"Sync Manager 15", 0x0878, EC_RW, EC_R, 0x08}
 };
+
 static inline int FMMUx(int channel)
 {
   switch (channel)
@@ -279,6 +279,7 @@ static inline int FMMUx(int channel)
       return -1;
   }
 }
+
 static inline int Sync_Managerx(int channel)
 {
   switch (channel)
@@ -336,6 +337,7 @@ static inline int Sync_Managerx(int channel)
       return -1;
   }
 }
+
 static inline int Watchdog_Time_Channelx(int channel)
 {
   switch (channel)
@@ -394,8 +396,7 @@ static inline int Watchdog_Time_Channelx(int channel)
   }
 }
 
-/// EtherCAT Data Layer Information
-
+/// EtherCAT Data Layer Information 
 class EC_DLInformation : public EC_DataStruct
 {
 public:
@@ -423,28 +424,31 @@ public:
 };
 
 /// EtherCAT Fixed Station Address
-
 class EC_FixedStationAddress : public EC_DataStruct
 {
 public:
   EC_FixedStationAddress(uint16_t fixed_station_address = 0x0000) :
-    EC_DataStruct(EC_Slave_RD[ECAT_Station_Address].size), FixedStationAddress(
-                                                                               fixed_station_address){ }
+      EC_DataStruct(EC_Slave_RD[ECAT_Station_Address].size), FixedStationAddress(
+          fixed_station_address)
+  {
+  }
   EC_FixedStationAddress(const unsigned char * data) :
-    EC_DataStruct(EC_Slave_RD[ECAT_Station_Address].size)
+      EC_DataStruct(EC_Slave_RD[ECAT_Station_Address].size)
   {
     nw2host(data, FixedStationAddress);
   }
+
   virtual unsigned char * dump(unsigned char * a_buffer) const
-  {
+                               {
     return host2nw(a_buffer, FixedStationAddress);
   }
-  void operator=(const EC_FixedStationAddress & ad)
+
+  void operator =(const EC_FixedStationAddress & ad)
   {
     this->FixedStationAddress = ad.FixedStationAddress;
   }
-  bool operator==(const EC_FixedStationAddress & ad) const
-  {
+  bool operator ==(const EC_FixedStationAddress & ad) const
+                   {
     return (this->FixedStationAddress == ad.FixedStationAddress);
   }
   operator uint16_t() const
@@ -457,7 +461,6 @@ private:
 };
 
 // EtherCAT states
-
 enum EC_State
 {
   EC_INIT_STATE = 0x01,
@@ -468,7 +471,6 @@ enum EC_State
 };
 
 /// AL Control register
-
 class EC_ALControl : public EC_DataStruct
 {
 public:
@@ -492,7 +494,6 @@ public:
 };
 
 /// AL Status register
-
 class EC_ALStatus : public EC_DataStruct
 {
 public:
@@ -515,7 +516,6 @@ public:
 };
 
 /// Slave Information Interface Control/Status
-
 class EC_SIIControlStatus : public EC_DataStruct
 {
 public:
@@ -551,7 +551,6 @@ public:
 };
 
 /// Class representing a bit position within a byte
-
 class EC_BitPos
 {
 public:
@@ -574,7 +573,6 @@ private:
 };
 
 /// EtherCAT FMMU
-
 class EC_FMMU : public EC_DataStruct
 {
 public:
@@ -620,7 +618,6 @@ enum ECBufferType
 };
 
 /// Class representing queued or buffered Syncman buffertypes
-
 /** @see EC_SyncMan
  */
 class EC_BufferType
@@ -631,7 +628,7 @@ public:
    */
   EC_BufferType(ECBufferType bt = EC_BUFFERED)
   {
-    m_buffertype = (uint8_t) bt;
+    m_buffertype = (uint8_t)bt;
   }
 
   /// Cast operator
@@ -650,7 +647,6 @@ enum ECDirection
 };
 
 /// Class representing read/write direction of Syncman buffer
-
 /** @see EC_SyncMan
  */
 class EC_Direction
@@ -664,7 +660,7 @@ public:
    */
   EC_Direction(ECDirection dir = EC_READ_FROM_MASTER)
   {
-    m_direction = (uint8_t) dir;
+    m_direction = (uint8_t)dir;
   }
   /// Cast operator
   operator uint8_t() const
@@ -684,7 +680,6 @@ enum ECBufferedState
 };
 
 /// Class representing buffered state of a SyncMan
-
 /** @see EC_SyncMan
  */
 class EC_BufferedState
@@ -700,7 +695,7 @@ public:
    */
   EC_BufferedState(ECBufferedState state = EC_FIRST_BUFFER)
   {
-    m_buffered_state = (uint8_t) state;
+    m_buffered_state = (uint8_t)state;
   }
   /// Cast operator
   operator uint8_t() const
@@ -715,7 +710,6 @@ static const bool EC_QUEUED_STATE_READ = false;
 static const bool EC_QUEUED_STATE_WRITTEN = true;
 
 /// EtherCAT Sync Manager
-
 class EC_SyncMan : public EC_DataStruct
 {
 public:

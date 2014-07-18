@@ -36,7 +36,6 @@
 #include "ros_ethercat_eml/ethercat_telegram.h"
 
 /// EtherCAT telegram for all _logical addressing_ modes
-
 /** EtherCAT telegram for all _logical addressing_ modes, that is
  logical read (LRD), logical write (LWR), and logical Read-Write (LRW)
  */
@@ -83,7 +82,6 @@ private:
 };
 
 /// Logical Read Telegram
-
 class LRD_Telegram : public Logical_Addressing_Telegram
 {
 public:
@@ -105,7 +103,6 @@ protected:
 };
 
 /// Logical Write Telegram
-
 class LWR_Telegram : public Logical_Addressing_Telegram
 {
 public:
@@ -127,7 +124,6 @@ protected:
 };
 
 /// Logical Read Write Telegram
-
 class LRW_Telegram : public Logical_Addressing_Telegram
 {
 public:

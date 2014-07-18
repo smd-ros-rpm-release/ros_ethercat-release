@@ -47,15 +47,14 @@ class ActuatorState
 {
 public:
   ActuatorState() :
-    device_id_(0),
-    position_(0),
-    velocity_(0),
-    last_commanded_current_(0.0),
-    last_measured_current_(0.0),
-    last_commanded_effort_(0.0),
-    last_measured_effort_(0.0),
-    max_effort_(0.0),
-    motor_voltage_(0.0)
+      device_id_(0),
+          position_(0),
+          velocity_(0),
+          last_commanded_current_(0),
+          last_measured_current_(0),
+          last_commanded_effort_(0),
+          last_measured_effort_(0),
+          motor_voltage_(0)
   {
   }
 
@@ -64,7 +63,7 @@ public:
   double position_; //!< The position of the motor (in radians)
   double velocity_; //!< The velocity in radians per second
 
-  double last_commanded_current_; //!< Current computed based on effort specified in ActuatorCommand (in amps)
+  double last_commanded_current_; //!< The current computed based on the effort specified in the ActuatorCommand (in amps)
   double last_measured_current_; //!< The measured current (in amps)
 
   double last_commanded_effort_; //!< The torque requested in the previous ActuatorCommand (in Nm)
@@ -79,8 +78,7 @@ class ActuatorCommand
 {
 public:
   ActuatorCommand() :
-    enable_(0),
-    effort_(0)
+      enable_(0), effort_(0)
   {
   }
 
@@ -100,7 +98,6 @@ public:
 class Actuator
 {
 public:
-  std::string name_;
   ActuatorState state_;
   ActuatorCommand command_;
 };
