@@ -70,41 +70,36 @@
  */
 
 using std::string;
-using boost::unordered_map;
 using boost::ptr_unordered_map;
-using boost::scoped_ptr;
-using ros_ethercat_model::JointState;
-using hardware_interface::JointStateHandle;
-using hardware_interface::JointHandle;
 using ros_ethercat_model::JointState;
 using ros_ethercat_model::Actuator;
-using ros_ethercat_model::RobotState;
-using ros::NodeHandle;
+using ros_ethercat_model::Transmission;
 
 static const string name = "ros_ethercat";
 
 class RosEthercat : public hardware_interface::RobotHW
 {
 public:
-  RosEthercat(NodeHandle &nh, const string &eth, bool allow, TiXmlElement* config) :
+  RosEthercat(ros::NodeHandle &nh, const string &eth, bool allow, TiXmlElement* config) :
     cm_node_(nh, "ethercat_controller_manager"),
     model_(config),
-    ec_(name, static_cast<hardware_interface::HardwareInterface*>(&model_), eth, allow)
+    ec_(name, static_cast<hardware_interface::HardwareInterface*> (&model_), eth, allow)
   {
-    unordered_map<string, JointState>::iterator it = model_.joint_states_.begin();
-    while (it != model_.joint_states_.end())
+    for (ptr_unordered_map<string, JointState>::iterator it = model_.joint_states_.begin();
+         it != model_.joint_states_.end();
+         ++it)
     {
-      JointStateHandle jsh(it->first,
-                           &it->second.position_,
-                           &it->second.velocity_,
-                           &it->second.measured_effort_);
+      hardware_interface::JointStateHandle jsh(it->first,
+                                               &it->second->position_,
+                                               &it->second->velocity_,
+                                               &it->second->measured_effort_);
       joint_state_interface_.registerHandle(jsh);
 
-      JointHandle jh(joint_state_interface_.getHandle(it->first), &it->second.commanded_effort_);
+      hardware_interface::JointHandle jh(joint_state_interface_.getHandle(it->first),
+                                         &it->second->commanded_effort_);
       joint_command_interface_.registerHandle(jh);
       effort_joint_interface_.registerHandle(jh);
       position_joint_interface_.registerHandle(jh);
-      ++it;
     }
 
     if (!model_.joint_states_.empty())
@@ -116,22 +111,24 @@ public:
     registerInterface(&effort_joint_interface_);
     registerInterface(&position_joint_interface_);
   }
-
-  virtual ~RosEthercat() {}
+  virtual ~RosEthercat()
+  {
+  }
 
   /// propagate position actuator -> joint and set commands to zero
   void read()
   {
     ec_.update(false, false);
+
     model_.current_time_ = ros::Time::now();
     model_.propagateActuatorPositionToJointPosition();
 
-    unordered_map<string, JointState>::iterator it = model_.joint_states_.begin();
-    while (it != model_.joint_states_.end())
+    for (ptr_unordered_map<string, JointState>::iterator it = model_.joint_states_.begin();
+         it != model_.joint_states_.end();
+         ++it)
     {
-      it->second.joint_statistics_.update(&it->second);
-      it->second.commanded_effort_ = 0;
-      ++it;
+      it->second->joint_statistics_.update(it->second);
+      it->second->commanded_effort_ = 0;
     }
   }
 
@@ -139,32 +136,34 @@ public:
   void write()
   {
     /// Modify the commanded_effort_ of each joint state so that the joint limits are satisfied
-    unordered_map<string, JointState>::iterator it = model_.joint_states_.begin();
-    while (it != model_.joint_states_.end())
+    for (ptr_unordered_map<string, JointState>::iterator it = model_.joint_states_.begin();
+         it != model_.joint_states_.end();
+         ++it)
     {
-      it->second.enforceLimits();
-      ++it;
+      it->second->enforceLimits();
     }
+
     model_.propagateJointEffortToActuatorEffort();
     if (!model_.joint_states_.empty())
       mech_stats_publisher_->publish();
   }
 
+  /// stop all actuators
   void shutdown()
   {
-    ptr_unordered_map<string, Actuator>::iterator it = model_.actuators_.begin();
-    while (it != model_.actuators_.end())
+    for (boost::ptr_vector<Transmission>::iterator it = model_.transmissions_.begin();
+         it != model_.transmissions_.end();
+         ++it)
     {
-      it->second->command_.enable_ = false;
-      it->second->command_.effort_ = 0;
-      ++it;
+      it->actuator_->command_.enable_ = false;
+      it->actuator_->command_.effort_ = 0;
     }
   }
 
-  NodeHandle cm_node_;
-  RobotState model_;
+  ros::NodeHandle cm_node_;
+  ros_ethercat_model::RobotState model_;
   EthercatHardware ec_;
-  scoped_ptr<MechStatsPublisher> mech_stats_publisher_;
+  boost::scoped_ptr<MechStatsPublisher> mech_stats_publisher_;
 
   hardware_interface::JointStateInterface joint_state_interface_;
   hardware_interface::JointCommandInterface joint_command_interface_;
